@@ -1,7 +1,7 @@
 {
     "name": "dlist.js",
     "description": "An API wrapper for the discordlist.gg api",
-    "version": "0.0.1-pre",
+    "version": "0.1.0",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
     "files": [
@@ -13,7 +13,10 @@
         "type": "git",
         "url": "https://github.com/Luna-devv/dlist.js"
     },
-    "dependencies": {
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "~17.0.38",
+        "dotenv": "^16.0.1",
         "typescript": "^4.7.2"
     }
 }
