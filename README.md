@@ -13,12 +13,16 @@ yarn add dlist.js
 ```
 
 ## Create Client
-To be able to interact with the api, you have to create a client, in the client's option you have to provide the [discordlist.gg]()-token. **⚠️(NOT your discord bot token)**
+To be able to interact with the api, you have to create a client, in the client's option you have to provide the [discordlist.gg]()-token. <br />
+`https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks`
 ```ts
 import { Client as Dlist } from 'dlist.js';
 //js: const Dlist = require('dlist.js');
 
-const client = new Dlist({
-    token: 'xxx'
+const client = new Client({
+    token: process.env.dlist_token,
+    bot: '857230367350063104'
 });
+
+client.postGuilds(500);
 ```

@@ -1,7 +1,8 @@
-const { Client } = require('../dist')
+const { Client } = require('../dist');
+require('dotenv').config();
 
-const client = new Client({
-    token: 'a'
-})
-
-console.log(client.getToken())
+const dlistAPI = new Client({
+    token: process.env.token,
+    bot: '857230367350063104'
+});
+dlistAPI.postGuilds(500);

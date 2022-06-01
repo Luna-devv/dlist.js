@@ -1,3 +1,5 @@
 export type clientOptions = {
-    token: string
+    token: string,
+    bot: string
+    interval?: number
 }
