@@ -24,7 +24,7 @@ export class WebServer {
 
     /**
      * Start listening to the port
-     * @param undefined
+     * @param {type path:string, client: Client}
      * @example
      * webServer.registerPath('/');
      */
@@ -48,7 +48,7 @@ export class WebServer {
                     message: 'Invalid voting body provided',
                     __example: {
                         bot: '857230367350063104',
-                        zser: '821472922140803112',
+                        user: '821472922140803112',
                         isTest: true
                     }
                 })

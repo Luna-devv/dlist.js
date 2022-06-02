@@ -46,7 +46,7 @@ client.on('vote', data => {
     /* {
         user: '857230367350063104',
         bot: '821472922140803112', 
-        sTest: true
+        isTest: true
         }
     */
 });

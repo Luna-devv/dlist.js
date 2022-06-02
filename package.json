@@ -1,7 +1,7 @@
 {
     "name": "dlist.js",
     "description": "An API wrapper for the discordlist.gg api",
-    "version": "0.2",
+    "version": "0.2.1",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
     "files": [
@@ -9,6 +9,7 @@
     ],
     "license": "MIT",
     "author": "Luna <luna@waya.one> (http://waya.one/go/luna/)",
+    "url": "https://github.com/Luna-devv/dlist.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/Luna-devv/dlist.js"
