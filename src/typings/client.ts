@@ -1,5 +1,8 @@
+import type { webServerOptions } from '../typings/webServer';
+
 export type clientOptions = {
-    token: string,
+    token: string
     bot: string
     interval?: number
+    webhook?: webServerOptions
 }
