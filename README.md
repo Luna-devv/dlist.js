@@ -14,15 +14,41 @@ yarn add dlist.js
 
 ## Create Client
 To be able to interact with the api, you have to create a client, in the client's option you have to provide the [discordlist.gg]()-token. <br />
-`https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks`
+To get your token please visit [`https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks`](https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks) and look for the `Token` section.
 ```ts
 import { Client } from 'dlist.js';
 //js: const { Client } = require('dlist.js');
 
 const client = new Client({
-    token: process.env.dlist_token,
-    bot: '857230367350063104'
+    token: 'xxx',
+    bot: '857230367350063104',
+
+    // if you want to use the voting webhook:
+    webhook: {
+        port: 3000,
+        authorization: 'abc',
+        listenCallback: () => console.log('web server ready')
+    }
+});
+```
+
+## Posting Guild data
+To dispaly the count in how many guilds your bot is in
+```ts
+client.postGuilds(500);
+```
+
+## Voting webhook
+If you use this, you have to add the `'webhook'` part in [#Create Client](#Create-Client) to be able to recieve events. In the next, head over to [`https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks`](https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks) again, and enter your servers IP and port in the `Webhook URl` field, as example: `http://123.456.78:3000`. In the `Webhook Authorization` field, create some strong key and treat it like a password, **the same** value has to be entered in the `[#Create Client](#Create-Client).webhhok.authorization` in order to work!
+```ts
+client.on('vote', data => {
+    console.log(data);
+    /* {
+        user: '857230367350063104',
+        bot: '821472922140803112', 
+        sTest: true
+        }
+    */
 });
 
-client.postGuilds(500);
 ```
