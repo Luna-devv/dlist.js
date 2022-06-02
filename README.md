@@ -39,7 +39,7 @@ client.postGuilds(500);
 ```
 
 ## Voting webhook
-If you use this, you have to add the `'webhook'` part in [#Create Client](#Create-Client) to be able to recieve events. In the next, head over to [`https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks`](https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks) again, and enter your servers IP and port in the `Webhook URl` field, as example: `http://123.456.78:3000`. In the `Webhook Authorization` field, create some strong key and treat it like a password, **the same** value has to be entered in the `[#Create Client](#Create-Client).webhhok.authorization` in order to work!
+If you use this, you have to add the `'webhook'` part in [#Create Client](#Create-Client) to be able to recieve events. In the next, head over to [`https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks`](https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks) again, and enter your servers IP and port in the `Webhook URl` field, as example: `http://123.456.78:3000`. In the `Webhook Authorization` field, create some strong key and treat it like a password, **the same** value has to be entered in the [`#Create Client`](#Create-Client)`.webhhok.authorization` in order to work!
 ```ts
 client.on('vote', data => {
     console.log(data);
