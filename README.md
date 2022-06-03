@@ -44,9 +44,9 @@ If you use this, you have to add the `'webhook'` part in [#Create Client](#Creat
 client.on('vote', data => {
     console.log(data);
     /* {
-        user: '857230367350063104',
-        bot: '821472922140803112', 
-        isTest: true
+        user_id: '857230367350063104',
+        bot_id: '821472922140803112', 
+        is_test: true
         }
     */
 });
