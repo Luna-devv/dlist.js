@@ -14,11 +14,11 @@ export class InternalClient {
         this.id = options.bot;
 
         this.webhook = {};
-        this.webhook.port = options.webhook.port;
-        this.webhook.authorization = options.webhook.authorization;
-        this.webhook.listenCallback = options.webhook.listenCallback;
+        this.webhook.port = options.webhook?.port;
+        this.webhook.authorization = options.webhook?.authorization;
+        this.webhook.listenCallback = options.webhook?.listenCallback;
 
-        if (this.webhook.port && this.webhook.authorization) {
+        if (this.webhook?.port && this.webhook?.authorization) {
             this.webserver = new WebServer(this.webhook);
             this.webserver.registerPath('/', this.client).then(() => this.webserver.listen())
         };
