@@ -30,6 +30,10 @@ import { Client } from 'dlist.js';
 // COMMONJS
 const { Client } = require('dlist.js');
 
+// If above conflicts with discord.js client
+const { Client: DlistClient } = require('dlist.js');
+
+// Client -> DlistClient if above import is used
 const client = new Client({
     token: 'xxx',
     bot: '857230367350063104',
