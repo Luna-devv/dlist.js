@@ -9,12 +9,26 @@ export class RestManager {
         this.interval = options.interval;
     }
 
-    async put(options: requestOption) {
-        const data = await this.request('PUT', options.path, options.payload);
+    private token;
+    private interval;
+
+    async get(options: requestOption) {
+        const data = await this.request('GET', options.path, options.payload, options.domain);
         return data;
     }
 
-    async request(method: string, path: string, payload: requestPayload) {
+    async post(options: requestOption) {
+        const data = await this.request('POST', options.path, options.payload, options.domain);
+        return data;
+    }
+
+
+    async put(options: requestOption) {
+        const data = await this.request('PUT', options.path, options.payload, options.domain);
+        return data;
+    }
+
+    async request(method: string, path: string, payload: requestPayload, domain: string) {
         let params = '';
         if (payload?.query) {
             let thisParamIs = 1;
@@ -27,13 +41,13 @@ export class RestManager {
         let request;
         if (Number(process.versions.node.split('.')[0]) < 18) request = require('node-fetch');
         else request = fetch;
-        const res = await request(`https://api.discordlist.gg/v0${path}${params}`, {
+        const res = await request(`https://${domain || 'api'}.discordlist.gg/v0${path}${params}`, {
             method,
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: this.token
             },
-            body: JSON.stringify(payload?.body || {})
+            body: method == 'GET' ? undefined : JSON.stringify(payload?.body || {})
         }).catch((error: any) => {
             throw new Error(error);
         });
@@ -49,7 +63,4 @@ export class RestManager {
             }
         }
     }
-
-    private token;
-    private interval;
 };

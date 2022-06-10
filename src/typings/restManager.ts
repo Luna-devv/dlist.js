@@ -1,14 +1,15 @@
 export type restManagerOptions = {
-    token: string,
+    token: string
     interval: number
 }
 
 export type requestPayload = {
-    body?: any,
+    body?: any
     query?: { key: string, value: string | number }[]
 }
 
 export type requestOption = {
-    path: string,
-    payload: requestPayload
+    path: string
+    domain?: string
+    payload?: requestPayload
 }
