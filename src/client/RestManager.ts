@@ -1,8 +1,7 @@
 import type { restManagerOptions, requestOption, requestPayload } from '../typings/restManager';
-
 /**
  * The internal request manager
- * @param {restManagerOptions} 
+ * @param {restManagerOptions} options
  */
 export class RestManager {
     constructor(options: restManagerOptions) {
@@ -25,14 +24,17 @@ export class RestManager {
             });
         };
 
-        const res = await fetch(`https://api.discordlist.gg/v0${path}${params}`, {
+        let request;
+        if (Number(process.versions.node.split('.')[0]) < 18) request = require('node-fetch');
+        else request = fetch;
+        const res = await request(`https://api.discordlist.gg/v0${path}${params}`, {
             method,
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: this.token
             },
             body: JSON.stringify(payload?.body || {})
-        }).catch(error => {
+        }).catch((error: any) => {
             throw new Error(error);
         });
         const response = await res.json();

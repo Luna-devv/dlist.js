@@ -8,13 +8,22 @@ If you need help with the website or the raw API, join the **[Official Support S
 All examples are written for **TypeScript**, if you use **JavaScript** please use the COMMONJS import method.
 
 ## Install
-Download this [npm package](https://www.npmjs.com/package/dlist.js) to use in your project with
+Download this [npm package](https://www.npmjs.com/package/dlist.js) to use in your project with the following commands:
 
+If you run **node.js v18 or higher**, use
 ```bash
 # With NPM
 npm install dlist.js
 # With yarn
 yarn add dlist.js
+```
+
+For **node.js v17 or lower**, use
+```bash
+# With NPM
+npm install dlist.js node-fetch
+# With yarn
+yarn add dlist.js node-fetch
 ```
 
 ## Getting Dlist Token
@@ -58,7 +67,7 @@ If you use this, you have to add the `'webhook'` part in [#Create Dlist Client](
 
 Next, head over to [`https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks`](https://discordlist.gg/bot/<BOT_ID>/dashboard/webhooks) again and enter your server's IP and Port in the `Webhook URl` field, for example: `http://123.456.78:3000`.
 
-In the `Webhook Authorization` field, create a strong key and treat it like a password, **the same** value has to be entered in the [`#Create Dlist Client`](#Create-Dlist-Client)`.webhhok.authorization` in order to work!
+In the `Webhook Authorization` field, create a strong key and treat it like a password, **the same** value has to be entered in the [`#Create Dlist Client`](#Create-Dlist-Client)`.webhook.authorization` in order to work!
 ```ts
 client.on('vote', data => {
     console.log(data);
