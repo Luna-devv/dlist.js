@@ -21,9 +21,9 @@ yarn add dlist.js
 For **node.js v17 or lower**, use
 ```bash
 # With NPM
-npm install dlist.js node-fetch
+npm install dlist.js node-fetch@2
 # With yarn
-yarn add dlist.js node-fetch
+yarn add dlist.js node-fetch@2
 ```
 
 ## Getting Dlist Token
