@@ -38,19 +38,31 @@ export class RestManager {
             });
         };
 
-        let request;
-        if (Number(process.versions.node.split('.')[0]) < 18) request = require('node-fetch');
-        else request = fetch;
-        const res = await request(`https://${domain || 'api'}.discordlist.gg/v0${path}${params}`, {
-            method,
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: this.token
-            },
-            body: method == 'GET' ? undefined : JSON.stringify(payload?.body || {})
-        }).catch((error: any) => {
-            throw new Error(error);
-        });
+        let res:any='';
+        if (Number(process.versions.node.split('.')[0]) == 18) {
+            const request = require('node-fetch')
+            res = await request(`https://${domain || 'api'}.discordlist.gg/v0${path}${params}`, {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: this.token
+                },
+                body: method == 'GET' ? undefined : JSON.stringify(payload?.body || {})
+            }).catch((error: any) => {
+                throw new Error(error);
+            });
+        } else {
+            res = await fetch(`https://${domain || 'api'}.discordlist.gg/v0${path}${params}`, {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: this.token
+                },
+                body: method == 'GET' ? undefined : JSON.stringify(payload?.body || {})
+            }).catch((error: any) => {
+                throw new Error(error);
+            });
+        };
         const response = await res.json();
 
         switch (res.status) {
