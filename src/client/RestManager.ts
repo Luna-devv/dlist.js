@@ -39,7 +39,7 @@ export class RestManager {
         };
 
         let res:any='';
-        if (Number(process.versions.node.split('.')[0]) == 18) {
+        if (Number(process.versions.node.split('.')[0]) < 18) {
             const request = require('node-fetch')
             res = await request(`https://${domain || 'api'}.discordlist.gg/v0${path}${params}`, {
                 method,
