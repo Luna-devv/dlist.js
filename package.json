@@ -1,7 +1,7 @@
 {
     "name": "dlist.js",
     "description": "An API wrapper for the discordlist.gg api",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
     "files": [
@@ -21,7 +21,7 @@
     "devDependencies": {
         "@types/express": "^4.17.13",
         "@types/jsonwebtoken": "^8.5.8",
-        "@types/node": "~17.0.38",
+        "@types/node": "12",
         "dotenv": "^16.0.1",
         "typescript": "^4.7.2"
     }

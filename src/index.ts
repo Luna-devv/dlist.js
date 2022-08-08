@@ -3,7 +3,6 @@ import { InternalClient } from './client/InternalClient';
 import { RestManager } from './client/RestManager';
 
 import { EventEmitter } from 'events';
-import { features } from 'process';
 
 /**
  * Create the client
@@ -62,7 +61,7 @@ export class Client extends EventEmitter {
     */
     async getBot(bot: string) {
         const data = await this.restManager.get({
-            path: `/bots/${this.id}`
+            path: `/bots/${bot}`
         });
         return data;
     }
@@ -72,7 +71,18 @@ export class Client extends EventEmitter {
      * @param {string} query 
      * @see https://github.com/Luna-devv/dlist.js#readme
      * @example
-     * client.getBot("857230367350063104");
+     * client.search("waya", {
+     *  limit: 30, // how many you want to get (optional)
+     *  offset: 0, // how many it should skip (optional)
+     *  sort: 'relevancy' | 'votes' | 'age' | 'trending' | 'popularity' | 'premium', // (optional)
+     *  order: 'desc' | 'asc' ,// (optional)
+     *  filter: {
+     *      tags: [],  // tags - string array (optional)
+     *      features: "<https://cdn.waya.one/r/1654875620.png>", // optional
+     *      premium: false, // true or false (optional)
+     *      filterMode: 'union' | 'intersection'  // idk (optional)
+     *  }
+     * });
     */
     async search(query?: string, options?: {
         limit?: number
