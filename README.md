@@ -1,6 +1,9 @@
 [![](https://img.shields.io/discord/828676951023550495?color=5865F2&logo=discord&logoColor=white)](https://lunish.nl/support)
 ![](https://img.shields.io/npm/dt/dlist.js.svg?maxAge=3600)
 ![](https://img.shields.io/npm/v/dlist.js?maxAge=3600)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I6AFVAP)
+
 ## About
 This is an unofficial [discordlist.gg]() package written for **Typecript and JavaScript** to interact with its public API.
 This lib can be used with any discord framework (or without any), for example with `discord.js` and `eirs`.
