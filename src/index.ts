@@ -14,19 +14,24 @@ import { EventEmitter } from 'events';
 export class Client extends EventEmitter {
     constructor(options: clientOptions) {
         super();
-        this.internalClient = new InternalClient(options, this);
         this.token = options.token;
         this.id = options.bot;
+        this.webhook = options.webhook;
+
+        if (this.webhook?.port && this.webhook?.authorization) {
+            this.webserver = new WebServer(this.webhook);
+            this.webserver.registerPath('/', this).then(() => this.webserver.listen());
+        }
 
         this.interval = options.interval ?? 6 * 60 * 1000;
         this.restManager = new RestManager({ token: this.token, interval: this.interval });
     }
 
-    private internalClient;
     private token;
     public interval;
     public id;
-    public webhook: any;
+    public webhook;
+    private webserver;
 
     private restManager;
 
