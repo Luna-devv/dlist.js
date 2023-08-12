@@ -89,6 +89,22 @@ export class Client extends EventEmitter {
     }
 
     /**
+     * Get users from the website
+     * @param {string} userId
+     * @see https://github.com/Luna-devv/dlist.js#readme
+     * @example ```ts
+     * client.getUser("821472922140803112");
+     * ```
+    */
+    async getUser(userId: string) {
+        const data = await this.restManager.get({
+            path: `/users/${userId}`
+        }) as DiscordlistBot;
+
+        return data;
+    }
+
+    /**
      * Get bots from the website
      * @param {string} query
      * @see https://github.com/Luna-devv/dlist.js#readme
