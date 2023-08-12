@@ -1,4 +1,4 @@
-import type { webServerOptions } from '../typings/webServer';
+import type { WebserverOptions } from '../typings/webServer';
 import { Client } from '../index';
 
 import express from 'express';
@@ -6,12 +6,12 @@ import jwt from 'jsonwebtoken';
 
 /**
  * The internal webserver manager for incoming webhook requests
- * @param {webServerOptions} 
+ * @param {WebserverOptions}
  * @example
- * new WebServer(webServerOptions);
+ * new WebServer(WebserverOptions);
  */
 export class WebServer {
-    constructor(options: webServerOptions) {
+    constructor(options: WebserverOptions) {
         this.port = options.port;
         this.authorization = options.authorization;
         this.listenCallback = options.listenCallback;
@@ -33,14 +33,14 @@ export class WebServer {
     async registerPath(path: string, client: Client) {
         this.app.use(express.text());
 
-        this.app.post(path, (req: express.Request, res: express.Response) => {
+        this.app.post(path, (req, res) => {
 
             let decoded;
             try {
                 decoded = jwt.verify(req.body, this.authorization);
             } catch (e) {
                 client.emit('invalidVoteRequest', req);
-            };
+            }
 
             client.emit('vote', decoded);
             res.status(200).json({
@@ -49,12 +49,12 @@ export class WebServer {
             });
         });
 
-        this.app.all('*', (req: express.Request, res: express.Response) => {
+        this.app.all('*', (req, res) => {
             res.status(404).json({
                 status: 404,
                 message: 'This end-point does not exist or method is not in use'
             });
-        })
+        });
     }
 
     /**
@@ -64,7 +64,7 @@ export class WebServer {
      * webServer.listen();
      */
     listen() {
-        this.app.use((req: express.Request, res: express.Response, next: any) => {
+        this.app.use((req, res, next) => {
             res.setHeader('Access-Control-Allow-Origin', '*');
             res.setHeader('Access-Control-Allow-Methods', 'POST');
             res.setHeader('Access-Control-Allow-Headers', '*');
@@ -75,4 +75,4 @@ export class WebServer {
         this.app.listen(this.port, this.listenCallback);
         return true;
     }
-};
+}

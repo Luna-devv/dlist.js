@@ -1,15 +1,15 @@
-export type restManagerOptions = {
-    token: string
-    interval: number
+export type RestManagerOptions = {
+    token: string;
+    interval: number;
 }
 
-export type requestPayload = {
-    body?: any
-    query?: { key: string, value: string | number }[]
+export type RequestPayload = {
+    body?: Record<string, unknown>;
+    query?: { key: string, value: string | number }[];
 }
 
-export type requestOption = {
-    path: string
-    domain?: string
-    payload?: requestPayload
+export type RequestOption = {
+    path: string;
+    domain?: string;
+    payload?: RequestPayload;
 }
