@@ -1,4 +1,9 @@
-import type { ClientOptions, DiscordlistBot, DiscordlistSearch } from './typings/client';
+import type {
+    ClientOptions,
+    DiscordlistBot,
+    DiscordlistUser,
+    DiscordlistSearch
+} from './typings/client';
 
 import { RestManager } from './client/RestManager';
 import { WebServer } from './client/WebServer';
@@ -99,7 +104,7 @@ export class Client extends EventEmitter {
     async getUser(userId: string) {
         const data = await this.restManager.get({
             path: `/users/${userId}`
-        }) as DiscordlistBot;
+        }) as DiscordlistUser;
 
         return data;
     }
